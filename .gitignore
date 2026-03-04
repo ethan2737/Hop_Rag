@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# API Keys & Secrets
+.env
+.env.local
+.env.*.local
+config_local.py
+*.key
+*.secret
+
+# Logs
+*.log
+logs/
+
+# Output files (临时输出)
+output_files/
+output/
+
+# Knowledge bases (用户数据，建议不上传)
+# 如果需要上传示例知识库，可以保留特定的示例文件
+knowledge_bases/
+!knowledge_bases/.gitkeep
+
+# Test PDFs (测试文件，按需保留)
+测试 PDF/
+
+# Gradio
+.gradio/
+gradio/
+
+# Model files (如果有本地模型)
+*.bin
+*.pt
+*.pth
+*.onnx
+*.h5
+model/
+models/
+workspace/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
