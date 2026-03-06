@@ -1549,114 +1549,32 @@ def batch_upload_to_kb(file_objs: List, kb_name: str) -> str:
 
 # Gradio 界面 - 修改为支持多知识库
 custom_css = """
-.web-search-toggle .form { display: flex !important; align-items: center !important; }
-.web-search-toggle .form > label { order: 2 !important; margin-left: 10px !important; }
-.web-search-toggle .checkbox-wrap { order: 1 !important; background: #d4e4d4 !important; border-radius: 15px !important; padding: 2px !important; width: 50px !important; height: 28px !important; }
-.web-search-toggle .checkbox-wrap .checkbox-container { width: 24px !important; height: 24px !important; transition: all 0.3s ease !important; }
-.web-search-toggle input:checked + .checkbox-wrap { background: #2196F3 !important; }
-.web-search-toggle input:checked + .checkbox-wrap .checkbox-container { transform: translateX(22px) !important; }
-#search-results { max-height: 400px; overflow-y: auto; border: 1px solid #2196F3; border-radius: 5px; padding: 10px; background-color: #e7f0f9; }
-#question-input { border-color: #2196F3 !important; }
-#answer-output { background-color: #f0f7f0; border-color: #2196F3 !important; max-height: 400px; overflow-y: auto; }
-.submit-btn { background-color: #2196F3 !important; border: none !important; }
-.reasoning-steps { background-color: #f0f7f0; border: 1px dashed #2196F3; padding: 10px; margin-top: 10px; border-radius: 5px; }
-.loading-spinner { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(33, 150, 243, 0.3); border-radius: 50%; border-top-color: #2196F3; animation: spin 1s ease-in-out infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.stream-update { animation: fade 0.5s ease-in-out; }
-@keyframes fade { from { background-color: rgba(33, 150, 243, 0.1); } to { background-color: transparent; } }
-.status-box { padding: 10px; border-radius: 5px; margin-bottom: 10px; font-weight: bold; }
-.status-processing { background-color: #e3f2fd; color: #1565c0; border-left: 4px solid #2196F3; }
-.status-success { background-color: #e8f5e9; color: #2e7d32; border-left: 4px solid #4CAF50; }
-.status-error { background-color: #ffebee; color: #c62828; border-left: 4px solid #f44336; }
-.multi-hop-toggle .form { display: flex !important; align-items: center !important; }
-.multi-hop-toggle .form > label { order: 2 !important; margin-left: 10px !important; }
-.multi-hop-toggle .checkbox-wrap { order: 1 !important; background: #d4e4d4 !important; border-radius: 15px !important; padding: 2px !important; width: 50px !important; height: 28px !important; }
-.multi-hop-toggle .checkbox-wrap .checkbox-container { width: 24px !important; height: 24px !important; transition: all 0.3s ease !important; }
-.multi-hop-toggle input:checked + .checkbox-wrap { background: #4CAF50 !important; }
-.multi-hop-toggle input:checked + .checkbox-wrap .checkbox-container { transform: translateX(22px) !important; }
-.kb-management { border: 1px solid #2196F3; border-radius: 5px; padding: 15px; margin-bottom: 15px; background-color: #f0f7ff; }
-.kb-selector { margin-bottom: 10px; }
-/* 缩小文件上传区域高度 */
-.compact-upload {
-    margin-bottom: 10px;
-}
-
-.file-upload.compact {
-    padding: 10px;  /* 减小内边距 */
-    min-height: 120px; /* 减小最小高度 */
-    margin-bottom: 10px;
-}
-
-/* 优化知识库内容显示区域 */
-.kb-files-list {
-    height: 400px;
-    overflow-y: auto;
-}
-
-/* 确保右侧列有足够空间 */
-#kb-files-group {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-.kb-files-list { max-height: 250px; overflow-y: auto; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; background-color: #f9f9f9; }
-#kb-management-container {
-    max-width: 800px !important;
-    margin: 0 !important; /* 移除自动边距，靠左对齐 */
-    margin-left: 20px !important; /* 添加左边距 */
-}
-.container {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
-.file-upload {
-    border: 2px dashed #2196F3;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #f0f7ff;
-    margin-bottom: 15px;
-}
-.tabs.tab-selected {
-    background-color: #e3f2fd;
-    border-bottom: 3px solid #2196F3;
-}
-.group {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: #fafafa;
-}
-
-/* 添加更多针对知识库管理页面的样式 */
-#kb-controls, #kb-file-upload, #kb-files-group {
-    width: 100% !important;
-    max-width: 800px !important;
-    margin-right: auto !important;
-}
-
-/* 修改Gradio默认的标签页样式以支持左对齐 */
-.tabs > .tab-nav > button {
-    flex: 0 1 auto !important; /* 修改为不自动扩展，只占用必要空间 */
-}
-.tabs > .tabitem {
-    padding-left: 0 !important; /* 移除左边距，使内容靠左 */
-}
-/* 对于首页的顶部标题部分 */
-#app-container h1, #app-container h2, #app-container h3, 
-#app-container > .prose {
-    text-align: left !important;
-    padding-left: 20px !important;
-}
+/* Hop-RAG 医疗知识问答系统 - 简洁清爽风格 */
+#app-container { background: #f8fafc !important; }
+#header-container { background: white !important; border-bottom: 1px solid #e2e8f0 !important; padding: 12px 24px !important; }
+.tabs { background: white !important; border-bottom: 1px solid #e2e8f0 !important; }
+.tabs > .tab-nav > button { background: transparent !important; color: #64748b !important; border: none !important; padding: 12px 20px !important; font-size: 14px !important; }
+.tabs > .tab-nav > button:hover { color: #0ea5e9 !important; }
+.tabs > .tab-nav > button.tab-selected { color: #0ea5e9 !important; border-bottom: 2px solid #0ea5e9 !important; }
+.tabitem { background: transparent !important; padding: 16px !important; }
+.group { background: white !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; padding: 12px !important; margin-bottom: 12px !important; box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important; }
+input[type="text"], textarea, select { background: white !important; border: 1px solid #cbd5e1 !important; border-radius: 6px !important; color: #334155 !important; padding: 8px 12px !important; font-size: 13px !important; }
+input:focus, textarea:focus, select:focus { border-color: #0ea5e9 !important; box-shadow: 0 0 0 2px rgba(14,165,233,0.1) !important; }
+button.primary { background: #0ea5e9 !important; border: none !important; padding: 8px 16px !important; font-size: 13px !important; }
+button.secondary { background: #f1f5f9 !important; border: 1px solid #e2e8f0 !important; color: #475569 !important; padding: 8px 12px !important; font-size: 13px !important; }
+button.stop { background: #fef2f2 !important; border: 1px solid #fecaca !important; color: #dc2626 !important; }
+#chatbot { background: white !important; border: 1px solid #e2e8f0 !important; border-radius: 8px !important; }
+#search-results { background: #f8fafc !important; border: 1px solid #e2e8f0 !important; border-radius: 6px !important; font-size: 13px !important; }
+.file-upload { background: #f8fafc !important; border: 2px dashed #cbd5e1 !important; border-radius: 8px !important; }
 """
 
 custom_theme = gr.themes.Soft(
-    primary_hue="blue",
-    secondary_hue="blue",
-    neutral_hue="gray",
+    primary_hue="cyan",
+    secondary_hue="indigo",
+    neutral_hue="slate",
     text_size="lg",
     spacing_size="md",
-    radius_size="md"
+    radius_size="lg"
 )
 
 # 添加简单的JavaScript，通过html组件实现
@@ -1685,13 +1603,18 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 """
 
-with gr.Blocks(title="医疗知识问答系统", elem_id="app-container") as demo:
-    with gr.Column(elem_id="header-container"):
-        gr.Markdown("""
-        # 🏥 医疗知识问答系统
-        **智能医疗助手，支持多知识库管理、多轮对话、普通语义检索和高级多跳推理**  
-        本系统支持创建多个知识库，上传TXT或PDF文件，通过语义向量检索或创新的多跳推理机制提供医疗信息查询服务。
-        """)
+with gr.Blocks(title="Hop-RAG 医疗知识问答系统", elem_id="app-container") as demo:
+    gr.HTML("""
+    <div style="background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 28px;">🏥</span>
+            <div>
+                <h1 style="margin: 0; font-size: 1.1rem; font-weight: 600; color: #1e293b;">Hop-RAG 医疗知识问答</h1>
+                <p style="margin: 0; font-size: 0.7rem; color: #64748b;">智能医疗助手</p>
+            </div>
+        </div>
+    </div>
+    """)
     
     # 添加JavaScript脚本
     gr.HTML(js_code, visible=False)
@@ -1702,147 +1625,79 @@ with gr.Blocks(title="医疗知识问答系统", elem_id="app-container") as dem
     # 创建标签页
     with gr.Tabs() as tabs:
         # 知识库管理标签页
-        with gr.TabItem("知识库管理"):
-            with gr.Row():
-                # 左侧列：控制区
-                with gr.Column(scale=1, min_width=400):
-                    gr.Markdown("### 📚 知识库管理与构建")
-                    
-                    with gr.Row(elem_id="kb-controls"):
-                        with gr.Column(scale=1):
-                            new_kb_name = gr.Textbox(
-                                label="新知识库名称",
-                                placeholder="输入新知识库名称",
-                                lines=1
-                            )
-                            create_kb_btn = gr.Button("创建知识库", variant="primary", scale=1)
-                    
-                        with gr.Column(scale=1):
-                            current_kbs = get_knowledge_bases()
-                            kb_dropdown = gr.Dropdown(
-                                label="选择知识库",
-                                choices=current_kbs,
-                                value=DEFAULT_KB if DEFAULT_KB in current_kbs else (current_kbs[0] if current_kbs else None),
-                                elem_classes="kb-selector"
-                            )
-                            
-                            with gr.Row():
-                                refresh_kb_btn = gr.Button("刷新列表", size="sm", scale=1)
-                                delete_kb_btn = gr.Button("删除知识库", size="sm", variant="stop", scale=1)
-                    
-                    kb_status = gr.Textbox(label="知识库状态", interactive=False, placeholder="选择或创建知识库")
-                    
-                    with gr.Group(elem_id="kb-file-upload", elem_classes="compact-upload"):
-                        gr.Markdown("### 📄 上传文件到知识库")
-                        file_upload = gr.File(
-                            label="选择文件（支持多选TXT/PDF）",
-                            type="filepath",
-                            file_types=[".txt", ".pdf"],
-                            file_count="multiple",
-                            elem_classes="file-upload compact"
-                        )
-                        upload_status = gr.Textbox(label="上传状态", interactive=False, placeholder="上传后显示状态")
-                    
-                    kb_select_for_chat = gr.Dropdown(
-                        label="为对话选择知识库",
-                        choices=current_kbs,
-                        value=DEFAULT_KB if DEFAULT_KB in current_kbs else (current_kbs[0] if current_kbs else None),
-                        visible=False  # 隐藏，仅用于同步
-                    )
-                        
-                with gr.Column(scale=1, min_width=400):
-                    with gr.Group(elem_id="kb-files-group"):
-                        gr.Markdown("### 📋 知识库内容")
-                        kb_files_list = gr.Markdown(
-                            value="选择知识库查看文件...",
-                            elem_classes="kb-files-list"
-                        )
-                
-                # 用于对话界面的知识库选择器
-                kb_select_for_chat = gr.Dropdown(
-                    label="为对话选择知识库",
-                    choices=current_kbs,
-                    value=DEFAULT_KB if DEFAULT_KB in current_kbs else (current_kbs[0] if current_kbs else None),
-                    visible=False  # 隐藏，仅用于同步
-                )
-        
-        # 对话交互标签页
-        with gr.TabItem("对话交互"):
+        with gr.TabItem("📚 知识库管理"):
             with gr.Row():
                 with gr.Column(scale=1):
-                    gr.Markdown("### ⚙️ 对话设置")
-                    
-                    kb_dropdown_chat = gr.Dropdown(
-                        label="选择知识库进行对话",
+                    gr.Markdown("### 选择知识库")
+                    current_kbs = get_knowledge_bases()
+                    kb_dropdown = gr.Dropdown(
                         choices=current_kbs,
                         value=DEFAULT_KB if DEFAULT_KB in current_kbs else (current_kbs[0] if current_kbs else None),
                     )
-                    
                     with gr.Row():
-                        web_search_toggle = gr.Checkbox(
-                            label="🌐 启用联网搜索",
-                            value=True,
-                            info="获取最新医疗动态",
-                            elem_classes="web-search-toggle"
-                        )
-                        table_format_toggle = gr.Checkbox(
-                            label="📊 表格格式输出",
-                            value=True,
-                            info="使用Markdown表格展示结构化回答",
-                            elem_classes="web-search-toggle"
-                        )
-                    
-                    multi_hop_toggle = gr.Checkbox(
-                        label="🔄 启用多跳推理",
-                        value=False,
-                        info="使用高级多跳推理机制（较慢但更全面）",
-                        elem_classes="multi-hop-toggle"
+                        refresh_kb_btn = gr.Button("刷新", variant="secondary", size="sm")
+                        delete_kb_btn = gr.Button("删除", variant="stop", size="sm")
+
+                    gr.Markdown("### 创建知识库")
+                    new_kb_name = gr.Textbox(placeholder="输入新知识库名称", lines=1)
+                    create_kb_btn = gr.Button("创建", variant="primary")
+                    kb_status = gr.Textbox(label="状态", interactive=False)
+
+                    gr.Markdown("### 上传文档")
+                    file_upload = gr.File(
+                        type="filepath",
+                        file_types=[".txt", ".pdf"],
+                        file_count="multiple",
                     )
-                    
-                    with gr.Accordion("显示检索进展", open=False):
-                        search_results_output = gr.Markdown(
-                            label="检索过程",
-                            elem_id="search-results",
-                            value="等待提交问题..."
-                        )
-                    
-                with gr.Column(scale=3):
-                    gr.Markdown("### 💬 对话历史")
-                    chatbot = gr.Chatbot(
-                        elem_id="chatbot",
-                        label="对话历史",
-                        height=550
+                    upload_status = gr.Textbox(label="状态", interactive=False)
+
+                with gr.Column(scale=1):
+                    gr.Markdown("### 知识库内容")
+                    kb_files_list = gr.Markdown("选择知识库查看文件")
+
+                    kb_select_for_chat = gr.Dropdown(
+                        choices=current_kbs,
+                        value=DEFAULT_KB if DEFAULT_KB in current_kbs else (current_kbs[0] if current_kbs else None),
+                        visible=False
                     )
-            
+        
+        # 对话交互标签页
+        with gr.TabItem("💬 AI 对话"):
             with gr.Row():
-                question_input = gr.Textbox(
-                    label="输入医疗健康相关问题",
-                    placeholder="例如：2型糖尿病的症状和治疗方法有哪些？",
-                    lines=2,
-                    elem_id="question-input"
-                )
-            
-            with gr.Row(elem_classes="submit-row"):
-                submit_btn = gr.Button("提交问题", variant="primary", elem_classes="submit-btn")
-                clear_btn = gr.Button("清空输入", variant="secondary")
-                clear_history_btn = gr.Button("清空对话历史", variant="secondary", elem_classes="clear-history-btn")
-            
-            # 状态显示框
-            status_box = gr.HTML(
-                value='<div class="status-box status-processing">准备就绪，等待您的问题</div>',
-                visible=True
-            )
-            
+                with gr.Column(scale=1):
+                    gr.Markdown("### 设置")
+                    kb_dropdown_chat = gr.Dropdown(
+                        label="知识库",
+                        choices=current_kbs,
+                        value=DEFAULT_KB if DEFAULT_KB in current_kbs else (current_kbs[0] if current_kbs else None),
+                    )
+                    web_search_toggle = gr.Checkbox(label="联网搜索", value=True)
+                    table_format_toggle = gr.Checkbox(label="表格输出", value=True)
+                    multi_hop_toggle = gr.Checkbox(label="多跳推理", value=False)
+                    with gr.Accordion("检索详情", open=False):
+                        search_results_output = gr.Markdown("等待问题...")
+
+                with gr.Column(scale=3):
+                    gr.Markdown("### 对话")
+                    chatbot = gr.Chatbot(elem_id="chatbot", height=400)
+                    with gr.Row():
+                        question_input = gr.Textbox(placeholder="输入问题...", scale=4)
+                        submit_btn = gr.Button("发送", variant="primary")
+                    with gr.Row():
+                        clear_btn = gr.Button("清空输入", variant="secondary")
+                        clear_history_btn = gr.Button("清空历史", variant="secondary")
+
+            status_box = gr.HTML(value='<span style="color:#64748b;">准备就绪</span>')
+
             gr.Examples(
                 examples=[
                     ["2型糖尿病的症状和治疗方法有哪些？"],
                     ["高血压患者的日常饮食应该注意什么？"],
                     ["肺癌的早期症状和筛查方法是什么？"],
-                    ["新冠肺炎后遗症有哪些表现？如何缓解？"],
-                    ["儿童过敏性鼻炎的诊断标准和治疗方案有哪些？"]
+                    ["新冠肺炎后遗症有哪些表现？"],
                 ],
                 inputs=question_input,
-                label="示例问题（点击尝试）"
+                label="💡 示例问题"
             )
     
     # 创建知识库函数
