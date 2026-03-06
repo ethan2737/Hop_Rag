@@ -1549,7 +1549,7 @@ def batch_upload_to_kb(file_objs: List, kb_name: str) -> str:
 
 # Gradio 界面 - 修改为支持多知识库
 custom_css = """
-/* Hop-RAG 医疗知识问答系统 - 简洁清爽风格 */
+/* Hop-RAG 中医知识问答系统 - 简洁清爽风格 */
 #app-container { background: #f8fafc !important; }
 #header-container { background: white !important; border-bottom: 1px solid #e2e8f0 !important; padding: 12px 24px !important; }
 .tabs { background: white !important; border-bottom: 1px solid #e2e8f0 !important; }
@@ -1603,7 +1603,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 """
 
-with gr.Blocks(title="Hop-RAG 医疗知识问答系统", elem_id="app-container") as demo:
+with gr.Blocks(title="Hop-RAG 中医知识问答系统", elem_id="app-container") as demo:
     gr.HTML("""
     <div style="background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 12px;">
