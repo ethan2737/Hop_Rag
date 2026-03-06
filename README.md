@@ -45,7 +45,10 @@
 
 ```
 Hop-Rag/
+├── app.py              # 统一启动脚本（uv run app.py）
+├── api.py              # FastAPI 后端服务
 ├── config.py           # 配置文件（API 密钥、模型参数、路径等）
+├── rag.py              # 核心 RAG 系统实现（Gradio UI）
 ├── rag.py              # 核心 RAG 系统实现
 │   ├── TextVector      # 文本向量化类
 │   ├── ReasoningRAG    # 多跳推理 RAG 类
@@ -53,28 +56,65 @@ Hop-Rag/
 │   ├── 文件处理函数
 │   └── Gradio UI 定义
 ├── retrievor.py        # 信息检索与排序模块
-│   ├── TextRecallRank  # 文本召回排序类
-│   └── search_bing()   # Bing 搜索接口
 ├── text2vec.py         # 文本向量化工具
-└── requirements.txt    # Python 依赖
+├── pyproject.toml      # Python 项目配置和依赖
+├── frontend/           # Vue 3 前端
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   └── src/
+│       ├── api.js      # API 请求模块
+│       ├── main.js     # 入口文件
+│       ├── App.vue     # 根组件
+│       ├── api/        # API 模块
+│       ├── assets/     # 静态资源
+│       ├── components/ # Vue 组件
+│       ├── router/     # 路由配置
+│       └── views/      # 页面组件
+└── requirements.txt    # Python 依赖（兼容 pip）
 ```
 
 ## 依赖安装
 
-### 环境要求
+### 方式一：使用 uv（推荐）
 
-- Python 3.10+
-- CUDA 兼容的 GPU（可选，用于本地模型）
-
-### 安装步骤
+[uv](https://github.com/astral-sh/uv) 是一个快速的 Python 包管理器。
 
 ```bash
-# 克隆或进入项目目录
+# 安装 uv（如果尚未安装）
+pip install uv
+
+# 进入项目目录
+cd Hop-Rag
+
+# 同步依赖
+uv sync
+```
+
+### 方式二：使用 pip
+
+```bash
+# 进入项目目录
 cd Hop-Rag
 
 # 安装依赖
 pip install -r requirements.txt
 ```
+
+### 前端依赖
+
+前端依赖会在启动时自动安装，也可以手动安装：
+
+```bash
+cd frontend
+npm install
+```
+
+### 环境要求
+
+- Python 3.10+
+- Node.js 18+（用于前端服务）
+- CUDA 兼容的 GPU（可选，用于本地模型）
 
 ### 主要依赖
 
@@ -123,11 +163,41 @@ class Config():
 
 ### 启动应用
 
+推荐使用 `uv` 统一启动前后端服务：
+
 ```bash
-python rag.py
+# 克隆或进入项目目录
+cd Hop-Rag
+
+# 使用 uv 启动（推荐）
+uv run app.py
 ```
 
-启动后，访问终端显示的 URL（通常是 `http://localhost:7860`）打开 Web 界面。
+启动后：
+- **前端地址**: http://localhost:8080
+- **后端地址**: http://localhost:8002
+
+### 单独启动服务
+
+如需单独启动后端或前端：
+
+```bash
+# 仅启动后端 API
+uv run python api.py
+
+# 仅启动前端（需要先安装 Node.js 依赖）
+cd frontend
+npm install
+npm run dev
+```
+
+### 使用 Gradio 界面（可选）
+
+```bash
+uv run python rag.py
+```
+
+启动后，访问终端显示的 URL（通常是 `http://localhost:7860`）打开 Gradio Web 界面。
 
 ### 知识库管理
 
